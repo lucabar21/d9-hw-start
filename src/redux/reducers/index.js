@@ -13,6 +13,14 @@ const mainReducer = (state = initialState, action) => {
           content: state.favourites.content.concat(action.payload),
         },
       };
+
+    case `REMOVE_TO_LIST`:
+      return {
+        ...state,
+        favourites: {
+          content: state.favourites.content.filter((company, i) => i !== action.payload),
+        },
+      };
     default:
       return state;
   }
