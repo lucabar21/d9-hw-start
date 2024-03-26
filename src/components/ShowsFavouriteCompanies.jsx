@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import { BsFillTrashFill } from "react-icons/bs";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { removeFromList } from "../redux/actions";
 
 const ShowsFavouriteCompanies = () => {
   const FavouriteCompaniesList = useSelector((state) => {
@@ -24,14 +25,11 @@ const ShowsFavouriteCompanies = () => {
               style={{ border: "1px solid #00000033", borderRadius: 4 }}
               className="my-4 gap-5 px-5 py-2 d-flex justify-content-between align-items-baseline"
             >
-              <Link to={`/${company}`}>{company}</Link>
+              <Link to={`/${company.company_name}`}>{company.company_name}</Link>
               <Button
                 variant="danger"
                 onClick={() => {
-                  dispatch({
-                    type: `REMOVE_TO_LIST`,
-                    payload: i,
-                  });
+                  dispatch(removeFromList(i));
                 }}
               >
                 <BsFillTrashFill />

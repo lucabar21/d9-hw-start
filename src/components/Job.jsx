@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import { MdFavorite } from "react-icons/md";
 import { useDispatch } from "react-redux";
+import { addToFavourite } from "../redux/actions";
 
 const Job = ({ data }) => {
   const dispatch = useDispatch();
@@ -21,10 +22,7 @@ const Job = ({ data }) => {
         <Button
           variant="danger"
           onClick={() => {
-            dispatch({
-              type: `ADD_TO_FAVOURITE`,
-              payload: data.company_name,
-            });
+            dispatch(addToFavourite(data));
           }}
           className="d-flex align-items-center"
         >
